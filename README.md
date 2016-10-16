@@ -15,8 +15,8 @@ Quick Setup
 
 * `docker pull bschwind/esp-32-build`
 * `cd` to your esp-32 project
-* Without USB flashing support: `docker run --rm -it -v $(PWD):/esp/project bschwind/esp-32-build /bin/bash`
-* With USB flashing support: `docker run --rm -it --privileged -v /dev/bus/usb:/dev/bus/usb -v $(PWD):/esp/project bschwind/esp-32-build /bin/bash`
+* Without USB flashing support: `docker run --rm -it -v $(PATH_TO_ESP_IDF):/esp/esp-idf -v $(PATH_TO_YOUR_PROJECT):/esp/project bschwind/esp-32-build /bin/bash`
+* With USB flashing support: `docker run --rm -it --privileged -v /dev/bus/usb:/dev/bus/usb -v $(PATH_TO_ESP_IDF):/esp/esp-idf -v $(PATH_TO_YOUR_PROJECT):/esp/project bschwind/esp-32-build /bin/bash`
 
 Either step will put you in an interactive shell inside the container. If you have a Makefile in your project directory, you can immediately
 run `make` and your source should get compiled. `make flash` will attempt to flash the code to `/dev/ttyUSB0`.
