@@ -1,7 +1,7 @@
 esp-32 Build Environment
 ===============================
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/bschwind/esp-32-build.svg)](https://hub.docker.com/r/bschwind/esp-32-build/) [![Docker Stars](https://img.shields.io/docker/stars/bschwind/esp-32-build.svg)](https://hub.docker.com/r/bschwind/esp-32-build/) [![](https://images.microbadger.com/badges/image/bschwind/esp-32-build.svg)](https://microbadger.com/images/bschwind/esp-32-build "Get your own image badge on microbadger.com") [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/bschwind/esp-build/blob/master/LICENSE)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bschwind/esp-32-build.svg)](https://hub.docker.com/r/bschwind/esp-32-build/) [![Docker Stars](https://img.shields.io/docker/stars/bschwind/esp-32-build.svg)](https://hub.docker.com/r/bschwind/esp-32-build/) [![](https://images.microbadger.com/badges/image/bschwind/esp-32-build.svg)](https://microbadger.com/images/bschwind/esp-32-build "Get your own image badge on microbadger.com") [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/bschwind/esp-32-build/blob/master/LICENSE)
 
 This Dockerfile contains the dependencies necessary to build and flash programs for the ESP32 chip.
 
