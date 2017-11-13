@@ -12,7 +12,7 @@ RUN mkdir /esp/esp-idf
 RUN mkdir /esp/project
 
 # Get the ESP32 toolchain and extract it to /esp/xtensa-esp32-elf
-RUN wget -O /esp/esp-32-toolchain.tar.gz https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-61-gab8375a-5.2.0.tar.gz \
+RUN wget -O /esp/esp-32-toolchain.tar.gz https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-73-ge28a011-5.2.0.tar.gz \
     && tar -xzf /esp/esp-32-toolchain.tar.gz -C /esp \
     && rm /esp/esp-32-toolchain.tar.gz
 
