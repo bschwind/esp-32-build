@@ -4,6 +4,7 @@ FROM ubuntu:16.04
 RUN apt-get -qq update \
     && apt-get install -y gcc git wget make libncurses-dev flex bison gperf python python-serial \
                           cmake ninja-build \
+                          ccache \
                           vim picocom \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
