@@ -7,20 +7,23 @@ RUN apt-get -qq update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Create some directories
-RUN mkdir -p /esp/esp-idf /esp/project
+# Get the ESP32 toolchain
+ENV ESP_TCHAIN_BASEDIR /opt/local/espressif
 
-# Get the ESP32 toolchain and extract it to /esp/xtensa-esp32-elf
-RUN wget -O /esp/esp-32-toolchain.tar.gz https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz \
-    && tar -xzf /esp/esp-32-toolchain.tar.gz -C /esp \
-    && rm /esp/esp-32-toolchain.tar.gz
+RUN mkdir -p $ESP_TCHAIN_BASEDIR \
+    && wget -O $ESP_TCHAIN_BASEDIR/esp32-toolchain.tar.gz \
+            https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz \
+    && tar -xzf $ESP_TCHAIN_BASEDIR/esp32-toolchain.tar.gz \
+           -C $ESP_TCHAIN_BASEDIR/ \
+    && rm $ESP_TCHAIN_BASEDIR/esp32-toolchain.tar.gz
 
 # Add the toolchain binaries to PATH
-ENV PATH /esp/xtensa-esp32-elf/bin:$PATH
+ENV PATH $ESP_TCHAIN_BASEDIR/xtensa-esp32-elf/bin:$PATH
 
 # Setup IDF_PATH
 ENV IDF_PATH /esp/esp-idf
 
 # This is the directory where our project will show up
+RUN mkdir -p /esp/project
 WORKDIR /esp/project
 ENTRYPOINT ["/bin/bash"]
