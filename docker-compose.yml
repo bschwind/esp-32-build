@@ -1,0 +1,25 @@
+# source the setup-environment file
+#  source setup-environment
+#
+# then launch this with:
+#
+#   $ docker-compose build esp32-builder
+#   $ docker-compose run --rm esp32-builder
+
+version: '3'
+
+services:
+  esp32-builder:
+    build: .
+    image: jci/esp32-builder:latest
+    environment:
+      - CCACHE_DIR=/ccache
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    volumes:
+      - ./data:/esp
+      - data-volume:/ccache
+
+volumes:
+  data-volume:
+
