@@ -23,3 +23,4 @@ ENV IDF_PATH /esp/esp-idf
 
 # This is the directory where our project will show up
 WORKDIR /esp/project
+ENTRYPOINT ["/bin/bash"]
