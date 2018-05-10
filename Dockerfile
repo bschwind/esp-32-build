@@ -17,8 +17,15 @@ RUN mkdir -p $ESP_TCHAIN_BASEDIR \
            -C $ESP_TCHAIN_BASEDIR/ \
     && rm $ESP_TCHAIN_BASEDIR/esp32-toolchain.tar.gz
 
+RUN mkdir -p $ESP_TCHAIN_BASEDIR \
+    && wget -O $ESP_TCHAIN_BASEDIR/esp32ulp-toolchain.tar.gz \
+            https://dl.espressif.com/dl/esp32ulp-elf-binutils-linux64-d2ae637d.tar.gz \
+    && tar -xzf $ESP_TCHAIN_BASEDIR/esp32ulp-toolchain.tar.gz \
+           -C $ESP_TCHAIN_BASEDIR/ \
+    && rm $ESP_TCHAIN_BASEDIR/esp32ulp-toolchain.tar.gz
+
 # Add the toolchain binaries to PATH
-ENV PATH $ESP_TCHAIN_BASEDIR/xtensa-esp32-elf/bin:$PATH
+ENV PATH $ESP_TCHAIN_BASEDIR/xtensa-esp32-elf/bin:$ESP_TCHAIN_BASEDIR/esp32ulp-elf-binutils/bin:$PATH
 
 # Setup IDF_PATH
 ENV IDF_PATH /esp/esp-idf
