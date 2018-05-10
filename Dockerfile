@@ -24,11 +24,12 @@ RUN mkdir -p $ESP_TCHAIN_BASEDIR \
            -C $ESP_TCHAIN_BASEDIR/ \
     && rm $ESP_TCHAIN_BASEDIR/esp32ulp-toolchain.tar.gz
 
-# Add the toolchain binaries to PATH
-ENV PATH $ESP_TCHAIN_BASEDIR/xtensa-esp32-elf/bin:$ESP_TCHAIN_BASEDIR/esp32ulp-elf-binutils/bin:$PATH
-
 # Setup IDF_PATH
 ENV IDF_PATH /esp/esp-idf
+RUN mkdir -p $IDF_PATH
+
+# Add the toolchain binaries to PATH
+ENV PATH $ESP_TCHAIN_BASEDIR/xtensa-esp32-elf/bin:$ESP_TCHAIN_BASEDIR/esp32ulp-elf-binutils/bin:$IDF_PATH/tools:$PATH
 
 # This is the directory where our project will show up
 RUN mkdir -p /esp/project
