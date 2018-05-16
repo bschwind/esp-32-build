@@ -60,4 +60,13 @@ PRO TIP
 -------
 
 You can change the baud rate and other properties with `make menuconfig` which will drop you in esp-idf's project configuration menu. I recommend selecting a baud rate of 921600 as it will reduce flashing times to around 4-5 seconds.
- 
+
+Using ccache
+--------------
+
+* `docker pull bschwind/esp-32-build`
+* `cd` to your esp-32 project
+* create the ccache persistent directory
+  `docker create -v /mnt/ccache:/ccache --name ccache bschwind/esp-32-build`
+* `docker run --rm -it -v $(PATH_TO_ESP_IDF):/esp/esp-idf -v $(PATH_TO_YOUR_PROJECT):/esp/project -e CCACHE_DIR=/ccache --volumes-from ccache bschwind/esp-32-build /bin/bash`
+
